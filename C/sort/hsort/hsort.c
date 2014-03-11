@@ -67,6 +67,9 @@ void hsort(void *base, unsigned num, unsigned width, int (*comp)(const void *, c
 	char *last;
 	int i;
 
+	if(num == 0)
+		return;
+
 	heapify(base, num, width, comp);
 
 	do

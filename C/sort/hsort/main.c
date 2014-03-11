@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "hsort.h"
-#define MAX 5
+#define MAX 1
 
 typedef struct 
 {
@@ -72,12 +72,12 @@ int main()
 
 	printf("\n");*/
 
-	hsort((void *) &blk, MAX, sizeof(block), cmpasc);
+	hsort((void *) &arr, MAX, sizeof(int), cmpasc);
 
 	printf("sorted output: ");
 
 	for(i = 0; i < MAX; i++)
-		printf("%d, ", blk[i].id);
+		printf("%d, ", arr[i]);
 
 	printf("\n");
 
