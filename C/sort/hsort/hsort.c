@@ -30,11 +30,6 @@ static void sift(void *base, unsigned mid, unsigned num, unsigned width, int (*c
 		lchild = (char *) base + left * width;
 		rchild = (char *) base + right * width;
 
-#ifdef TEST
-	printf("left index: %d, right index: %d\n", left, right);
-	printf("lchild: %d, rchild: %d\n", *(int *) lchild, *(int *)rchild);
-#endif
-
 		if(right < num && comp(lchild, rchild) < 0)
 			small = right;
 		else
@@ -43,27 +38,13 @@ static void sift(void *base, unsigned mid, unsigned num, unsigned width, int (*c
 		midchild = (char *) base + mid * width;
 		smallchild = (char *) base + small * width;
 
-#ifdef TEST
-	printf("mid: %d, small: %d\n", *(int *) midchild, *(int *) smallchild);
-#endif
-
 		if(comp(midchild, smallchild) > 0)
 			return;			// since its already lesser, no need to swap
-
-#ifdef TEST
-	printf("small index: %d\n", small);
-	printf("swapping %d with %d\n", *(int *)midchild, *(int *)smallchild);
-#endif
 
 		// else bubble the lesser element up by swapping it
 		swap(midchild, smallchild, width);
 
 		mid = small;
-
-#ifdef TEST
-	printf("mid: %d\n", mid);
-#endif
-
 	}
 }
 
@@ -72,10 +53,6 @@ void heapify(void *base, unsigned num, unsigned width, int (*comp)(const void *,
 	int mid;
 
 	mid = floor(num / 2);
-
-#ifdef TEST
-	printf("mid: %d\n", mid);
-#endif
 
 	while(mid >= 0) {
 		sift(base, mid - 1, num, width, comp);
@@ -92,15 +69,6 @@ void hsort(void *base, unsigned num, unsigned width, int (*comp)(const void *, c
 
 	heapify(base, num, width, comp);
 
-#ifdef TEST
-	printf("heapified array: ");
-
-	for(i = 0; i < num ; i++) {
-		printf("%d, ", *(int *) (base + i * width));
-	}
-
-	printf("\n");
-#endif
 	do
 	{
 		next = base;
