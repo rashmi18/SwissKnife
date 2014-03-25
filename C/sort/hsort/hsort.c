@@ -48,7 +48,7 @@ static void sift(void *base, unsigned mid, unsigned num, unsigned width, int (*c
 	}
 }
 
-void heapify(void *base, unsigned num, unsigned width, int (*comp)(const void *, const void *))
+static void heapify(void *base, unsigned num, unsigned width, int (*comp)(const void *, const void *))
 {
 	int mid;
 
@@ -82,7 +82,7 @@ void hsort(void *base, unsigned num, unsigned width, int (*comp)(const void *, c
 		num--;
 
 		if(num > 0) {
-			heapify(base, num, width, comp);
+			sift(base, 0, num, width, comp);
 		}
 
 	}while(num > 0);

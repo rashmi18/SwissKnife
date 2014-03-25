@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "hsort.h"
-#define MAX 1
+#define MAX 20
 
 typedef struct 
 {
